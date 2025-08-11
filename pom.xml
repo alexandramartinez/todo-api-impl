@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.mycompany</groupId>
     <artifactId>todo-api-impl</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>mule-application</packaging>
     <name>todo-api-impl</name>
     <properties>
@@ -63,7 +63,7 @@
         <dependency>
             <groupId>5624e4be-f53b-4bee-8c3d-df519451790c</groupId>
             <artifactId>todo-task-api</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.2</version>
             <classifier>oas</classifier>
             <type>zip</type>
         </dependency>

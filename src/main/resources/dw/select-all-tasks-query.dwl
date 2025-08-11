@@ -5,7 +5,7 @@ var dueDate = attributes.queryParams.dueDate
 var whereClause = if (isEmpty(completed) and isEmpty(dueDate)) "" else "WHERE " ++ (
     [
         ("completed = $completed") if (!isEmpty(completed)),
-        ("dueDate = $dueDate") if (!isEmpty(dueDate))
+        ("dueDate = '$dueDate'") if (!isEmpty(dueDate))
     ] joinBy " AND "
 )
 ---

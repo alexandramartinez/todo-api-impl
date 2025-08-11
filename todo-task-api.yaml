@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-    version: 1.0.0
+    version: 1.0.2
     title: To-Do Task Management API
     description: A simple API for managing to-do tasks. Supports full CRUD operations for tasks in a single-user context.
 paths:
@@ -135,4 +135,3 @@ components:
                     example: false
             required:
                 - title
-                - completed

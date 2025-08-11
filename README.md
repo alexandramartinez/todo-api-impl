@@ -4,7 +4,8 @@ A MuleSoft API implementation that demonstrates MySQL database integration using
 
 ## Important: API Specification Setup
 
-⚠️ **Before using this project**, you'll need to implement the API specification in your own Anypoint Platform organization.
+> [!IMPORTANT]
+> **Before using this project**, you'll need to implement the API specification in your own Anypoint Platform organization.
 
 The complete OpenAPI 3.0 specification is available in [`todo-task-api.yaml`](todo-task-api.yaml). This project currently references an API specification from a specific organization. To use this project:
 
@@ -29,13 +30,13 @@ The API specification defines:
 
 ## API Endpoints
 
-| Method | Endpoint | Status | Description |
-|--------|----------|--------|-------------|
-| GET | `/api/tasks` | ✅ Implemented | Get all tasks |
-| GET | `/api/tasks/{taskId}` | 🔄 Placeholder | Get specific task |
-| POST | `/api/tasks` | 🔄 Placeholder | Create new task |
-| PUT | `/api/tasks/{taskId}` | 🔄 Placeholder | Update task |
-| DELETE | `/api/tasks/{taskId}` | 🔄 Placeholder | Delete task |
+| Method | Endpoint | Happy Path | Error Handling | Description |
+|--------|----------|------------|----------------|-------------|
+| GET | `/api/tasks` | ✅ | Not Implemented | Get all tasks |
+| GET | `/api/tasks/{taskId}` | ✅ | Not Implemented | Get specific task |
+| POST | `/api/tasks` | ✅ | Not Implemented | Create new task |
+| PUT | `/api/tasks/{taskId}` | ✅ | Not Implemented | Update task |
+| DELETE | `/api/tasks/{taskId}` | ✅ | Not Implemented | Delete task |
 
 
 ## Prerequisites
@@ -44,7 +45,7 @@ The API specification defines:
   - [Anypoint Extension Pack](https://marketplace.visualstudio.com/items?itemName=salesforce.mule-dx-extension-pack)
   - [Container Tools](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
   - [Database Client](https://marketplace.visualstudio.com/items?itemName=cweijan.vscode-database-client2)
-  - [Postcode](https://marketplace.visualstudio.com/items?itemName=rohinivsenthil.postcode)
+  - [Postcode](https://marketplace.visualstudio.com/items?itemName=rohinivsenthil.postcode) and/or [Postman](https://marketplace.visualstudio.com/items?itemName=Postman.postman-for-vscode)
 - [Docker Desktop](https://docs.docker.com/desktop/)
 
 ## Quick Start
@@ -99,8 +100,4 @@ Start the Mule application in Anypoint Code Builder.
 
 ### 4. Test the API
 
-Use Postcode or any REST client:
-
-```bash
-GET http://localhost:8081/api/tasks
-```
+You can use the attached Postman Collection to run the 5 endpoints: [To-Do API.postman_collection.json](/To-Do%20API.postman_collection.json)

@@ -5,7 +5,6 @@
 	http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
     <sub-flow name="get-task-by-id-subflow">
         <logger doc:name="START" doc:id="oznvbv" message="Start - Get task by ID"/>
-        <flow-ref name="global:set-taskId-var-from-uriParam-subflow"/>
         <flow-ref name="global:get-task-by-id-subflow"/>
         <logger doc:name="END" doc:id="fnovcx" message="End - Get task by ID"/></sub-flow>
 </mule>

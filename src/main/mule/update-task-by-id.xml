@@ -5,7 +5,7 @@
 	http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
     <sub-flow name="update-task-by-id-subflow">
         <logger doc:name="START" doc:id="mfiixv" message="Start - Update task by ID"/>
-        <flow-ref name="global:set-taskId-var-from-uriParam-subflow"/>
+        <flow-ref name="global:get-task-by-id-subflow" target="beforeUpdate"/>
         <ee:transform doc:name="task input" doc:id="kfovgo" >
             <ee:message >
                 <ee:set-payload doc:name="Set payload" doc:id="rmeygk" resource="dw/create-task-input.dwl"/>

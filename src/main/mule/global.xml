@@ -7,6 +7,11 @@
     <db:my-sql-connection database="mysqldb" host="127.0.0.1" password="password" port="3306" user="user"></db:my-sql-connection>
   </db:config>
   <sub-flow name="global:get-task-by-id-subflow">
+    <ee:transform doc:id="baltet" doc:name="taskId">
+      <ee:variables>
+        <ee:set-variable resource="dw/taskId-uriParam.dwl" variableName="taskId"></ee:set-variable>
+      </ee:variables>
+    </ee:transform>
     <db:select config-ref="Mysql_Database_Config" doc:id="igmrhl" doc:name="Get task by ID">
       <db:sql>
         <![CDATA[SELECT * from tasks WHERE id = :taskId LIMIT 1;]]>
@@ -15,17 +20,30 @@
         <![CDATA[#[vars.taskId]]]>
       </db:input-parameters>
     </db:select>
-    <ee:transform doc:id="dwckex" doc:name="to json response">
-      <ee:message>
-        <ee:set-payload doc:id="trrcrr" doc:name="Set payload" resource="dw/toJson.dwl"></ee:set-payload>
-      </ee:message>
-    </ee:transform>
-  </sub-flow>
-  <sub-flow name="global:set-taskId-var-from-uriParam-subflow">
-    <ee:transform doc:id="baltet" doc:name="taskId">
-      <ee:variables>
-        <ee:set-variable resource="dw/taskId-uriParam.dwl" variableName="taskId"></ee:set-variable>
-      </ee:variables>
-    </ee:transform>
+    <choice doc:name="Choice" doc:id="yhixat">
+      <when expression="#[isEmpty(payload)]">
+        <ee:transform doc:name="404" doc:id="xlpzpa">
+          <ee:message>
+            <ee:set-payload doc:name="Set payload" doc:id="fimrda">
+              <![CDATA[%dw 2.0
+output application/json
+---
+{message: "Task not found"}]]>
+            </ee:set-payload>
+          </ee:message>
+          <ee:variables>
+            <ee:set-variable variableName="httpStatus">404</ee:set-variable>
+          </ee:variables>
+        </ee:transform>
+        <raise-error type="TASKS:NOT_FOUND" doc:name="Task not found" doc:id="lbuzhn"/>
+      </when>
+      <otherwise>
+        <ee:transform doc:id="dwckex" doc:name="to json response">
+          <ee:message>
+            <ee:set-payload doc:id="trrcrr" doc:name="Set payload" resource="dw/toJson.dwl"></ee:set-payload>
+          </ee:message>
+        </ee:transform>
+      </otherwise>
+    </choice>
   </sub-flow>
 </mule>

@@ -2,7 +2,7 @@
 output application/java
 ---
 {
-    id: vars.taskId.taskId default payload.id,
+    id: vars.beforeUpdate.id default payload.id,
     title: payload.title default null,
     description: payload.description default null,
     dueDate: payload.dueDate default null,

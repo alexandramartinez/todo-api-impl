@@ -5,7 +5,7 @@
 	http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
     <sub-flow name="delete-task-by-id-subflow">
         <logger doc:name="START" doc:id="bbfcok" message="Start - Delete task by ID"/>
-        <flow-ref name="global:set-taskId-var-from-uriParam-subflow"/>
+        <flow-ref name="global:get-task-by-id-subflow"/>
         <db:delete doc:name="Delete task by ID" doc:id="fbzmbp" config-ref="Mysql_Database_Config">
             <db:sql><![CDATA[DELETE FROM tasks WHERE id = :taskId]]></db:sql>
             <db:input-parameters><![CDATA[#[vars.taskId]]]></db:input-parameters>        

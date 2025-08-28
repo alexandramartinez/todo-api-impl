@@ -1,5 +1,5 @@
 output application/java
 ---
-{
-    taskId: attributes.uriParams.taskId
-}
+if (isEmpty(vars.taskId)) {
+    taskId: attributes.uriParams.taskId default vars.beforeUpdate.id
+} else vars.taskId
